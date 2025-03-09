@@ -5,9 +5,17 @@ import com.smurzik.features.register.configureRegisterRouting
 import io.ktor.server.application.*
 import io.ktor.server.cio.*
 import io.ktor.server.engine.*
+import org.jetbrains.exposed.sql.Database
 
 fun main() {
-    embeddedServer(CIO, port = 8080, host = "0.0.0.0", module = Application::module)
+    Database.connect(
+        "jdbc:postgresql://localhost:5432/music_player",
+        driver = "org.postgresql.Driver",
+        user = "postgres",
+        password = "1233"
+    )
+
+    embeddedServer(CIO, port = 8081, host = "0.0.0.0", module = Application::module)
         .start(wait = true)
 }
 
