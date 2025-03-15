@@ -31,7 +31,7 @@ class RegisterController(private val call: ApplicationCall) {
                     UserDTO(
                         login = registerReceiveRemote.login,
                         password = registerReceiveRemote.password,
-                        username = ""
+                        username = registerReceiveRemote.username
                     )
                 )
             } catch (e: ExposedSQLException) {

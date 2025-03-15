@@ -2,6 +2,7 @@ package com.smurzik
 
 import com.smurzik.features.login.configureLoginRouting
 import com.smurzik.features.register.configureRegisterRouting
+import com.smurzik.features.user.configureUserRouting
 import io.ktor.server.application.*
 import io.ktor.server.cio.*
 import io.ktor.server.engine.*
@@ -20,6 +21,7 @@ fun main() {
 }
 
 fun Application.module() {
+    configureUserRouting()
     configureSerialization()
     configureLoginRouting()
     configureRegisterRouting()
