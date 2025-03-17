@@ -9,5 +9,9 @@ fun Application.configureUserRouting() {
             val userController = UserController(call)
             userController.fetchUser()
         }
+        post("/user/update") {
+            val userController = UserController(call)
+            userController.updateUser()
+        }
     }
 }
