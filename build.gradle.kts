@@ -23,6 +23,7 @@ dependencies {
     implementation("org.jetbrains.exposed:exposed-dao:0.60.0")
     implementation("org.jetbrains.exposed:exposed-jdbc:0.60.0")
     implementation("org.jetbrains.exposed:exposed-core:0.60.0")
+    implementation("at.favre.lib:bcrypt:0.10.2")
     implementation(libs.ktor.server.core)
     implementation(libs.ktor.server.content.negotiation)
     implementation(libs.ktor.server.cio)

@@ -1,15 +1,15 @@
 package com.smurzik.database.users
 
-import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import org.jetbrains.exposed.sql.Table
 import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.transactions.transaction
 import org.jetbrains.exposed.sql.update
+import kotlin.math.log
 
 object Users : Table("users") {
-    private val login = Users.varchar("login", 25)
-    private val password = Users.varchar("password", 25)
+    val login = Users.varchar("login", 25)
+    private val password = Users.varchar("password", 75)
     private val username = Users.varchar("username", 30)
 
     fun insert(userDTO: UserDTO) {
@@ -22,11 +22,11 @@ object Users : Table("users") {
         }
     }
 
+
     fun update(userDTO: UserDTO) {
         transaction {
             Users.update({ login eq userDTO.login }) {
                 it[login] = userDTO.login
-                it[password] = userDTO.password
                 it[username] = userDTO.username
             }
         }

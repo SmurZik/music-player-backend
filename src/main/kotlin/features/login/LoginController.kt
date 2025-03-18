@@ -3,6 +3,7 @@ package com.smurzik.features.login
 import com.smurzik.database.tokens.TokenDTO
 import com.smurzik.database.tokens.Tokens
 import com.smurzik.database.users.Users
+import com.smurzik.utils.verifyPassword
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.request.*
@@ -19,7 +20,7 @@ class LoginController(private val call: ApplicationCall) {
         if (userDTO == null) {
             call.respond(HttpStatusCode.BadRequest, "User not found")
         } else {
-            if (userDTO.password == receive.password) {
+            if (verifyPassword(receive.password, userDTO.password)) {
                 val token = UUID.randomUUID().toString()
                 Tokens.insert(
                     TokenDTO(

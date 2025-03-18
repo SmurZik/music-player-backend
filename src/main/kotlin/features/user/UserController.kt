@@ -39,7 +39,6 @@ class UserController(private val call: ApplicationCall) {
         val userReceiveRemote = call.receive<UserReceiveRemote>()
 
         if (TokenCheck.isTokenValid(token.orEmpty())) {
-            // валидация пароля
             val userDTO = UserDTO(
                 login = userReceiveRemote.login,
                 password = userReceiveRemote.password,

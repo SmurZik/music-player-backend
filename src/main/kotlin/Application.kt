@@ -1,5 +1,6 @@
 package com.smurzik
 
+import com.smurzik.features.favorites.configureFavoriteRouting
 import com.smurzik.features.login.configureLoginRouting
 import com.smurzik.features.register.configureRegisterRouting
 import com.smurzik.features.user.configureUserRouting
@@ -22,6 +23,7 @@ fun main() {
 
 fun Application.module() {
     configureUserRouting()
+    configureFavoriteRouting()
     configureSerialization()
     configureLoginRouting()
     configureRegisterRouting()
